@@ -1,4 +1,5 @@
 import streamlit as st
+from pathlib import Path
 import numpy as np
 import pandas as pd
 import pickle
@@ -7,17 +8,17 @@ import tensorflow as tf
 
 
 # Load the trained model
-model = tf.keras.models.load_model(r"models\model.h5")
+model = tf.keras.models.load_model(Path("models") / "model.h5")
 
 # Load the scaler and encoder
 
-with open(r"models\label_encoder_gender.pkl", "rb") as file:
+with open(Path("models") / "label_encoder_gender.pkl", "rb") as file:
     label_enocder_gender = pickle.load(file)
 
-with open(r"models\ohe_encoder_geography.pkl", "rb") as file:
+with open(Path("models") / "ohe_encoder_geography.pkl", "rb") as file:
     ohe_encoder_geography = pickle.load(file)
 
-with open(r"models\scaler.pkl", "rb") as file:
+with open(Path("models") / "scaler.pkl", "rb") as file:
     scaler = pickle.load(file)
 
 
